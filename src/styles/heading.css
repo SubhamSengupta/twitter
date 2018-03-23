@@ -31,28 +31,3 @@
   cursor: pointer;
   color: #239;
 }
-.log-div {
-  position: absolute;
-  left: 37%;
-  top: 20%;
-  width: 25%;
-  height: 60%;
-  box-shadow: 0 8px 10px 0px rgba(0, 0, 0, 0.3) 
-}
-.log-div h1{
-  text-align: center;
-  color: #888;
-}
-.log-div .cross {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 7px;
-  padding: 2px 7px;
-  color: tomato;
-  border-radius: 50%;
-}
-.log-div .cross:hover{
-  box-shadow: 0 3px 3px 0px rgba(0, 0, 0, .4);
-  cursor: pointer;
-}

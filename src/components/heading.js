@@ -1,5 +1,6 @@
 import React from 'react';
 import LogButtons from './logButtons.js'
+import '../styles/heading.css'
 
 class Heading extends React.Component{
   render () {

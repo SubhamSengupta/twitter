@@ -1,0 +1,8 @@
+.user-div {
+  height: 400px;
+  margin: 10%;
+  box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.5)
+}
+.user-div img {
+  width: 100%;
+}

@@ -1,0 +1,9 @@
+.users-wrapper {
+  margin-top: 7%;
+  margin-bottom: 100px;
+  margin-left: 3vw;
+  width: 94vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+

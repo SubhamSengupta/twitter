@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
-import Heading from './components/heading.js'
-import LogDiv from './components/logdiv.js'
+import './styles/App.css';
+import Heading from './components/heading'
+import LogDiv from './components/logdiv'
+import UsersWrapper from './components/userwrapper'
+import Footer from './components/footer'
 
 class App extends Component {
   constructor() {
@@ -32,6 +34,8 @@ class App extends Component {
     <div>
       <Heading changeState={this.changeState}/>
       {logDiv}
+      <UsersWrapper/>
+      <Footer/>
     </div>
     )
   }
