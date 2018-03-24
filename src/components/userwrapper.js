@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import '../styles/userwrapper.css'
 import User from '../components/user'
+import Loader from '../components/loader'
+import Profile from '../components/profile'
 const config = require('../config.json')
 
 class UsersWrapper extends Component {
@@ -8,7 +10,10 @@ class UsersWrapper extends Component {
     super()
     this.state = {
       users:'',
-      loaded: false
+      loaded: false,
+      clickStat: false,
+      followersClick: false,
+      clickedUser: ''
     }
   }
   componentDidMount() {
@@ -20,19 +25,37 @@ class UsersWrapper extends Component {
         })
       })
     })
+  } 
+  changeClickStat = (user) => {
+    if (this.state.clickStat){
+      this.setState({
+        followersClick: !this.state.followersClick,
+        clickedUser: user,
+      })
+    } else {
+      this.setState({
+        clickStat: true,
+        clickedUser: user
+      })
+    }
   }
   
   render() {
-    var usersDiv = <h1>Hello</h1>
-    if ( this.state.loaded){
-      usersDiv = this.state.users.map((user) => {
-        return <User data={user}/>
-      })
+    
+    var div = <Loader/>
+    if ( this.state.clickStat ){
+      console.log(this.state)
+      div = <Profile user={this.state.clickedUser} changeClickStat={this.changeClickStat}/>
     }
+    if ( this.state.loaded && !this.state.clickStat){     
+      var usersDiv = this.state.users.map((user) =>  {
+        return <User data={user} key={user.name} changeClickStat={this.changeClickStat}/>
+      })
+      div = <div className="users">{usersDiv}</div> 
+    }
+    console.log(div)
     return (
-      <div className="users-wrapper">
-        {usersDiv}
-      </div>
+      <div className="users-wrapper">{div}</div>
     )
   }
 }

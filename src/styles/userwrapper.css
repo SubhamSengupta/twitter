@@ -1,9 +1,22 @@
 .users-wrapper {
+  min-height: 65vh;
   margin-top: 7%;
   margin-bottom: 100px;
   margin-left: 3vw;
+}
+.users {
   width: 94vw;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.loader{
+  position: absolute;
+  left: 46vw;
+  top: 45vh;
+  width: 100px;
+  height: 100px;
+  background-image: url('https://loading.io/spinners/pies/lg.pie-chart-loading-gif.gif');
+  background-size: 100% auto;
 }
 

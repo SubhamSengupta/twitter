@@ -1,8 +1,46 @@
 .user-div {
-  height: 400px;
+  height: 420px;
   margin: 10%;
-  box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.5)
+  box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+.user-div:hover{
+  box-shadow: 0 25px 25px 0px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.user-div:hover .name{
+  color: tomato;
 }
 .user-div img {
   width: 100%;
+}
+.user-div .name {
+  font-size: 22px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #259;
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+.user-div .screen-name {
+  font-size: 18px;
+  width: 100%;
+  color: #888;
+  margin: 5px 0;
+}
+.user-div .ver {
+  height: 25px;
+  width: 25px;
+  background-image: url('https://cdn130.picsart.com/251045526005212.png?r1024x1024');
+  background-size: 100% auto;
+}
+.user-div .followers-count {
+  margin: 10px 0;
+  font-size: 15px;
+  color: #555;
+  font-weight: bold ; 
+}
+.followers {
+  font-size: 13px;
+  color: rgb(62, 78, 170);
 }

@@ -7,7 +7,7 @@ class Footer extends Component {
       <div className="footer">
         <div className="made-by">
           Made with
-          <span className="love"> &hearts;</span>
+          <span className="love"> &hearts;</span> in
           <span className="react"> React </span> 
           by <span className="name"> Subham</span>
         </div>
