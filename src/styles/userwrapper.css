@@ -1,31 +1,19 @@
 .users-wrapper {
-<<<<<<< HEAD
   min-height: 92vh;
   margin-left: 3vw;
 }
 .users {
   padding-top: 10vh;
-=======
-  min-height: 65vh;
-  margin-top: 7%;
-  margin-bottom: 100px;
-  margin-left: 3vw;
-}
-.users {
->>>>>>> 2540049577f3cf9b95d1ec086199e7e59819833b
   width: 94vw;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-<<<<<<< HEAD
 .user-div {
   height: 420px;
   margin: 20px;
   box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.5);
   text-align: center;
 }
-=======
->>>>>>> 2540049577f3cf9b95d1ec086199e7e59819833b
 
 .loader{
   position: absolute;

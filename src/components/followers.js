@@ -9,7 +9,6 @@ class Followers extends Component {
       isLoaded: false
     }
   }
-<<<<<<< HEAD
   componentWillReceiveProps(props){
     this.fetchData(props.screen_name)
     this.setState({isLoaded: false})
@@ -19,10 +18,6 @@ class Followers extends Component {
   }
   fetchData = (user) => {
     fetch(`${config.baseURL}/followers/${user}`).then((res) => {
-=======
-  componentDidMount() {
-    fetch(`${config.baseURL}/followers/${this.props.screen_name}`).then((res) => {
->>>>>>> 2540049577f3cf9b95d1ec086199e7e59819833b
       res.json().then((data) => {
         this.setState({
           followers: data,
@@ -30,10 +25,6 @@ class Followers extends Component {
         })
       })
     })
-<<<<<<< HEAD
-=======
-    
->>>>>>> 2540049577f3cf9b95d1ec086199e7e59819833b
   }
   render() {
     if( this.state.isLoaded){

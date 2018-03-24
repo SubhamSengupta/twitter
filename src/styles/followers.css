@@ -1,21 +1,11 @@
 .profile-followers{
     position: absolute;
-<<<<<<< HEAD
     top: 13vh;
     right: 80px;
     width: 20vw;
 }
 .follower-div {
     width: 20vw;
-=======
-    top: 13%;
-    right: 100px;
-    width: 320px;
-    min-height: 500px;
-}
-.follower-div {
-    width: 320px;
->>>>>>> 2540049577f3cf9b95d1ec086199e7e59819833b
     display: inline-flex;
     background: rgba(0, 0, 0, 0.1);
     margin: 2px 0;
@@ -28,30 +18,18 @@
     border: 2px solid tomato;
 }
 .follower-div img {
-<<<<<<< HEAD
     height: 40px;
-=======
-    height: 50px;
->>>>>>> 2540049577f3cf9b95d1ec086199e7e59819833b
     background-size: 100% auto;
     border-radius: 5px;
 }
 .follower-div .name {
-<<<<<<< HEAD
     font-size: 12px;
-=======
-    font-size: 16px;
->>>>>>> 2540049577f3cf9b95d1ec086199e7e59819833b
     font-weight: bold;
     color: #299;
     margin: 3px 10px;
 }
 .follower-div .screen-name {
-<<<<<<< HEAD
     font-size: 10px;
-=======
-    font-size: 15px;
->>>>>>> 2540049577f3cf9b95d1ec086199e7e59819833b
     color: #888;
     margin: 3px 10px;
 }
