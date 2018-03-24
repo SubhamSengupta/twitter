@@ -44,6 +44,10 @@ class UsersWrapper extends Component {
     
     var div = <Loader/>
     if ( this.state.clickStat ){
+<<<<<<< HEAD
+=======
+      console.log(this.state)
+>>>>>>> 2540049577f3cf9b95d1ec086199e7e59819833b
       div = <Profile user={this.state.clickedUser} changeClickStat={this.changeClickStat}/>
     }
     if ( this.state.loaded && !this.state.clickStat){     
@@ -52,6 +56,10 @@ class UsersWrapper extends Component {
       })
       div = <div className="users">{usersDiv}</div> 
     }
+<<<<<<< HEAD
+=======
+    console.log(div)
+>>>>>>> 2540049577f3cf9b95d1ec086199e7e59819833b
     return (
       <div className="users-wrapper">{div}</div>
     )
