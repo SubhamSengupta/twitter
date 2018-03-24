@@ -1,0 +1,33 @@
+.heading {
+  position: fixed;
+  display: inline-flex;
+  top: 0;
+  width: 90%;
+  padding: 10px 5%;
+  box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.1);
+  background: rgba(200, 200, 200, 0.05);
+}
+.heading .img{
+  height: 50px;
+  width: 200px;
+  background-image: url('http://www.reporting-focac.com/uploads/2/9/5/7/2957726/7194920_orig.png');
+  background-size: 100% auto;
+  background-position: center;
+}
+.heading .img:hover {
+  border-bottom: 1px solid rgb(71, 216, 241);
+}
+.heading .buttons {
+  position: absolute;
+  right: 50px;
+  display: inline-flex;
+}
+.heading .buttons p {
+  font-size: 17px;
+  color: rgb(71, 216, 241);
+  padding: 0 10px;
+}
+.heading .buttons p:hover {
+  cursor: pointer;
+  color: #239;
+}

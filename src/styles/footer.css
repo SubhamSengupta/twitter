@@ -1,0 +1,23 @@
+.footer {
+  width: 100%;
+  padding: 10px 0;
+  background: #eee;
+}
+.made-by {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 15px;
+  color: #888;
+}
+.love{
+  color: red;
+  font-size: 25px;
+}
+.react{
+  color: rgb(72, 134, 226);
+  font-weight: bold;
+}
+.name {
+  color: black;
+  font-weight: bold;
+}

@@ -1,0 +1,65 @@
+.profile-wrapper{
+  padding-top: 12vh;
+  width: 94vw;
+}
+.profile-basic {
+  width: 280px;
+  padding: 20px;
+  background: rgba(200, 200, 200, 0.2);
+  border-radius: 10px;
+}
+.profile-basic img {
+  width: 280px;
+}
+
+.profile-basic .name {
+  color: #555;
+  font-size: 25px;
+  font-weight: bold;
+  margin: 10px 0;
+  display: inline-flex;
+}
+.profile-basic .ver {
+  height: 30px;
+  width: 30px;
+  background-image: url('https://cdn130.picsart.com/251045526005212.png?r1024x1024');
+  background-size: 100% auto;
+}
+.profile-basic .screen-name{
+  font-size: 20px;
+  color: #888;
+  font-weight: bold;
+  max-width: 300px;
+}
+.profile-basic .description{
+  font-size: 14px;
+  color: #299;
+  margin: 10px 0;
+}
+.profile-basic .location{
+  font-size: 18px;
+  color: #255;
+  margin: 10px 0;
+  max-width: 300px;
+  display: inline-flex;
+  font-weight: bold;
+}
+.profile-basic .loc {
+  height: 23px;
+  width: 23px;
+  background-image: url('https://cdn2.iconfinder.com/data/icons/ios-7-style-metro-ui-icons/512/Flurry_Google_Places.png');
+  background-size: 100% auto;
+  margin-right: 5px;
+}
+.profile-basic .followers , .profile-basic .friends{
+  font-size: 16px;
+  color: #555;
+  font-weight: bold;
+  margin: 5px 0;
+}
+.profile-basic .follow-count {
+  color: tomato;
+}
+.friends-count{
+  color: #299;
+}

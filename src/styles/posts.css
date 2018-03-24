@@ -1,0 +1,16 @@
+.posts-wrapper {
+    position: absolute;
+    top: 14vh;
+    left: 30vw;
+    width: 42vw;
+    height: 75vh;
+    border: 1px solid black;
+    overflow-y: auto;
+}
+.loading-follower {
+    margin: 45% auto;
+    width: 100px;
+    height: 100px;
+    background-image: url('https://loading.io/spinners/ellipsis/lg.discuss-ellipsis-preloader.gif');
+    background-size: 100% auto;
+}
