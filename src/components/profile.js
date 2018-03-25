@@ -57,7 +57,7 @@ class ProfileBasic extends Component {
     return (
       <div className="profile-wrapper">
         <div className="profile-basic">
-          <img src={this.props.data.img_url} alt={this.props.data.name}/>
+          <img src={this.props.data.img_url} alt={this.props.data.name} align="middle"/>
           <div className="name">{this.props.data.name} {verified}</div>
           <div className="screen-name">@{this.props.data.screen_name}</div>
           <div className="description">{this.props.data.description}</div>
@@ -65,7 +65,7 @@ class ProfileBasic extends Component {
           <div className="followers">Followed By <span className="follow-count">{formatter(this.props.data.followers_count)}</span> people</div>
           <div className="friends">Friends with <span className="friends-count">{formatter(this.props.data.friends_count)} </span>people</div>
         </div>
-        <Posts user={this.props.data.screen_name}/>
+        <Posts user={this.props.data.screen_name} changeClickStat={this.props.changeClickStat}/>
         <Followers screen_name={this.props.data.screen_name} changeClickStat={this.props.changeClickStat}/>
       </div>
     )

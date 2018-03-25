@@ -1,16 +1,107 @@
 .posts-wrapper {
     position: absolute;
     top: 14vh;
-    left: 30vw;
-    width: 42vw;
+    left: 26vw;
+    width: 45vw;
     height: 75vh;
-    border: 1px solid black;
+    border-radius: 10px;
     overflow-y: auto;
 }
 .loading-follower {
-    margin: 45% auto;
+    margin: 0 auto;
+    margin-top: 35%;
     width: 100px;
     height: 100px;
     background-image: url('https://loading.io/spinners/ellipsis/lg.discuss-ellipsis-preloader.gif');
     background-size: 100% auto;
+}
+.posts-div {
+    border: 1px solid #eee;;
+    margin: 20px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 7px 15px 0px rgba(0, 0, 0, 0.4);
+}
+.posts-div img {
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 2px;
+    border: 1px solid #299;
+}
+.posts-div .details {
+    display: inline-flex;
+    padding: 5px;
+}
+.posts-div .name-details {
+    margin-left: 10px;
+    padding: 6px;
+}
+.posts-div .name{
+    display: inline-flex;
+}
+.posts-div .ver {
+    margin-left: 5px;
+    height: 18px;
+    width: 18px;
+    background-image: url('https://cdn130.picsart.com/251045526005212.png?r1024x1024');
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.posts-div .name {
+    color: #444;
+}
+.posts-div .screen-name {
+    font-size: 15px;
+    color: #777;
+}
+.posts-div .time {
+    font-size: 12px;
+    color: rgb(248, 62, 71);
+    text-align: right;
+}
+.posts-div .text {
+    color: #666;
+    font-size: 17px;
+}
+.posts-div .hash{
+    color: #299;
+    font-weight: bold;
+}
+.posts-div .user-redir {
+    color: tomato;
+    font-weight: bold;
+}
+.posts-div .user-redir:hover {
+    cursor: pointer;
+}
+.posts-div .tweet-stat {
+    width: 100%;
+    margin-top: 20px;
+    color: #666;
+    font-size: 15px;
+    font-weight: bold;
+    display: inline-flex;
+    justify-content: space-around;
+}
+.posts-div .favorite , .posts-div .retweet{
+    display: flex;
+}
+.posts-div .fav {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png');
+    width: 18px;
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 10px;
+}
+.posts-div .re-tweet {
+    background-image: url('https://www.seoclerk.com/pics/want55519-1naJS01508179397.png');
+    width: 30px;
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 10px;
 }

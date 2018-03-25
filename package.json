@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-=======
-    "jshint": "^2.9.5",
->>>>>>> 2540049577f3cf9b95d1ec086199e7e59819833b
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1"
@@ -17,8 +13,4 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 2540049577f3cf9b95d1ec086199e7e59819833b

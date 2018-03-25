@@ -3,13 +3,15 @@
   width: 94vw;
 }
 .profile-basic {
-  width: 280px;
+  width: 250px;
   padding: 20px;
   background: rgba(200, 200, 200, 0.2);
   border-radius: 10px;
+  margin-bottom: 5px;
 }
 .profile-basic img {
-  width: 280px;
+  width: 250px;
+  height: 250px;
 }
 
 .profile-basic .name {
@@ -23,6 +25,8 @@
   height: 30px;
   width: 30px;
   background-image: url('https://cdn130.picsart.com/251045526005212.png?r1024x1024');
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: 100% auto;
 }
 .profile-basic .screen-name{
@@ -49,6 +53,8 @@
   width: 23px;
   background-image: url('https://cdn2.iconfinder.com/data/icons/ios-7-style-metro-ui-icons/512/Flurry_Google_Places.png');
   background-size: 100% auto;
+  background-position: center;
+  background-repeat: no-repeat;
   margin-right: 5px;
 }
 .profile-basic .followers , .profile-basic .friends{
