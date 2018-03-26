@@ -82,7 +82,13 @@ class PostDiv extends Component {
       } else if (word.startsWith('http') || (word.startsWith('www')) || word.startsWith('\nhttp')) {
         return <a target="_blank" href={word} key={'l_' + word}>{word}</a>
       } else if (word.startsWith('@') || word.startsWith('\n@')) {
-        return <span className="user-redir" key={'@' + word} onClick={() => { this.userClicked(word) }}>{word}</span>
+        var format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+        var text = word
+        while( word.charAt(word.length - 1).match(format) || word.charAt(word.length - 2).match(format)){
+          word = word.substr(0, word.length - 1)
+        }
+        text = text.substr(word.length, text.length);
+        return <span><span className="user-redir" key={'@' + word} onClick={() => { this.userClicked(word) }}>{word}</span>{text}</span>
       }
       return word
     })
