@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+
 import '../styles/posts.css'
 import formatter from '../formatter'
 const config = require('../config.json')
@@ -83,12 +85,13 @@ class PostDiv extends Component {
         return <a target="_blank" href={word} key={'l_' + word}>{word}</a>
       } else if (word.startsWith('@') || word.startsWith('\n@')) {
         var format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+        word = word.substr(1, word.length)
         var text = word
         while( word.charAt(word.length - 1).match(format) || word.charAt(word.length - 2).match(format)){
           word = word.substr(0, word.length - 1)
         }
         text = text.substr(word.length, text.length);
-        return <span><span className="user-redir" key={'@' + word} onClick={() => { this.userClicked(word) }}>{word}</span>{text}</span>
+        return <Link to={`/users/${word}`}><span><span className="user-redir" key={'@' + word}>@{word}</span>{text}</span></Link>
       }
       return word
     })

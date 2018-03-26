@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import '../styles/userwrapper.css'
 import User from '../components/user'
 import Loader from '../components/loader'
@@ -9,15 +10,14 @@ class UsersWrapper extends Component {
   constructor() {
     super()
     this.state = {
-      users:'',
+      users: '',
       loaded: false,
-      clickStat: false,
       followersClick: false,
       clickedUser: ''
     }
   }
   componentDidMount() {
-    fetch(`${config.baseURL}/users`).then((res) =>{
+    fetch(`${config.baseURL}/users`).then((res) => {
       res.json().then((data) => {
         this.setState({
           users: data.data,
@@ -25,9 +25,9 @@ class UsersWrapper extends Component {
         })
       })
     })
-  } 
+  }
   changeClickStat = (user) => {
-    if (this.state.clickStat){
+    if (this.state.clickStat) {
       this.setState({
         followersClick: !this.state.followersClick,
         clickedUser: user,
@@ -39,21 +39,29 @@ class UsersWrapper extends Component {
       })
     }
   }
-  
+
   render() {
-    
-    var div = <Loader/>
-    if ( this.state.clickStat ){
-      div = <Profile user={this.state.clickedUser} changeClickStat={this.changeClickStat}/>
+
+    const AllUser = () => {
+      var div = <Loader />
+      if (this.state.loaded && !this.state.clickStat) {
+        var usersDiv = this.state.users.map((user) => {
+          return <Link to={`users/${user.data.screen_name}`}><User data={user} key={user.name} /></Link>
+        })
+        div = <div className="users">{usersDiv}</div>
+      }
+      return div
     }
-    if ( this.state.loaded && !this.state.clickStat){     
-      var usersDiv = this.state.users.map((user) =>  {
-        return <User data={user} key={user.name} changeClickStat={this.changeClickStat}/>
-      })
-      div = <div className="users">{usersDiv}</div> 
+    const Person = ({ match }) => {
+      return <Profile user={match.params.user}/>
     }
     return (
-      <div className="users-wrapper">{div}</div>
+      <Router>
+        <div className="users-wrapper">
+          <Route exact path="/" component={AllUser} />
+          <Route path={"/users/:user"} component={Person} />
+        </div>
+      </Router>
     )
   }
 }

@@ -23,4 +23,7 @@
   background-image: url('https://loading.io/spinners/pies/lg.pie-chart-loading-gif.gif');
   background-size: 100% auto;
 }
+a {
+  text-decoration: none;
+}
 

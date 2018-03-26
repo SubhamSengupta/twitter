@@ -68,9 +68,9 @@ app.get('/users/:user', (req, res) => {
     }
     res.send(obj)
   })
-})
-app.get('/followers/:name', (req, response) => {
-  let name = req.params.name;
+})  
+app.get('/followers/:user', (req, response) => {
+  let name = req.params.user;
   let url = 'https://api.twitter.com/1.1/followers/list.json?cursor=' +
     `-1&screen_name=${name}&skip_status=true&include_user_entities=false&count=10`;
   let options = {

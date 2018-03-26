@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import '../styles/followers.css'
 const config = require('../config.json')
 class Followers extends Component {
@@ -9,9 +10,9 @@ class Followers extends Component {
       isLoaded: false
     }
   }
-  componentWillReceiveProps(props){
+  componentWillReceiveProps(props) {
     this.fetchData(props.screen_name)
-    this.setState({isLoaded: false})
+    this.setState({ isLoaded: false })
   }
   componentDidMount() {
     this.fetchData(this.props.screen_name)
@@ -27,9 +28,9 @@ class Followers extends Component {
     })
   }
   render() {
-    if( this.state.isLoaded){
+    if (this.state.isLoaded) {
       var followers = this.state.followers.map((follower) => {
-        return <FollowerDiv data={follower} key={follower.screen_name} changeClickStat={this.props.changeClickStat}/>
+        return <FollowerDiv data={follower} key={follower.screen_name} changeClickStat={this.props.changeClickStat} />
       })
     } else {
       followers = <div className="loading-follower"></div>
@@ -43,18 +44,17 @@ class Followers extends Component {
 }
 
 class FollowerDiv extends Component {
-  userClicked =  () => {
-    this.props.changeClickStat(this.props.data.screen_name)
-  }
   render() {
     return (
-      <div className="follower-div" onClick={this.userClicked}>
-        <img src={this.props.data.img_url} alt={this.props.data.name}/>
-        <div className="details">
-          <p className="name">{this.props.data.name}</p>
-          <p className="screen-name">@{this.props.data.screen_name}</p>
+      <Link to={`/users/${this.props.data.screen_name}`} >
+        <div className="follower-div">
+          <img src={this.props.data.img_url} alt={this.props.data.name} />
+          <div className="details">
+            <p className="name">{this.props.data.name}</p>
+            <p className="screen-name">@{this.props.data.screen_name}</p>
+          </div>
         </div>
-      </div>
+      </Link>
     )
   }
 }
