@@ -4,49 +4,38 @@ import Loader from '../components/loader'
 import Followers from '../components/followers'
 import Posts from '../components/posts'
 import formatter from '../formatter'
-import Person from '../components/userwrapper'
 import { connect } from 'react-redux'
 const config = require('../config.json')
 
 
 class Profile extends Component {
-  constructor(props) {
-    super(props)
+  constructor () {
+    super()
+    this.state = {
+      isLoaded: false
+    }
   }
-  // componentWillReceiveProps(props) {
-  //   //this.fetchData(props.user)
-  //   //this.props.updateUserData(this.props.user)
-  //   this.setState({ isLoaded: false })
-  // }
   componentDidMount() {
-    //this.fetchData(this.props.user)
-    
-    this.props.updateUserData(this.props.user)
+    this.props.updateUserData(this.props.user).then(() => {
+      this.setState({ isLoaded : true})
+    })
   }
-  
-  
+
   render() {
-        var div = <Loader />
-        //console.log(this.props)
-        if(this.props.data.user_profile_data) {
-          div = <ProfileBasic data={this.props.data.user_profile_data} />
-        }
-    return(
-          div
-        )
-      }
+    return this.state.isLoaded
+      ? <ProfileBasic data={this.props.data.user_profile_data} />
+      : <Loader />
+  }
 }
 class ProfileBasic extends Component {
-  
+
   render() {
-    //console.log(this.props.userData)
-    //console.log(this.props)
-    if (this.props.data.location.length === 0) {
-      var location = undefined
-    } else {
-      location = <div className="location"><div className="loc"></div>{this.props.data.location}</div>
-    }
-    var verified = this.props.data.isVerified ? <div className="ver"></div> : undefined
+    var location = (this.props.data.location.length === 0)
+      ? undefined
+      : <div className="location"><div className="loc"></div>{this.props.data.location}</div>
+    var verified = this.props.data.isVerified
+      ? <div className="ver"></div>
+      : undefined
 
     return (
       <div className="profile-wrapper">
@@ -56,8 +45,16 @@ class ProfileBasic extends Component {
           <div className="screen-name">@{this.props.data.screen_name}</div>
           <div className="description">{this.props.data.description}</div>
           {location}
-          <div className="followers">Followed By <span className="follow-count">{formatter(this.props.data.followers_count)}</span> people</div>
-          <div className="friends">Friends with <span className="friends-count">{formatter(this.props.data.friends_count)} </span>people</div>
+          <div className="followers">
+            Followed By <span className="follow-count">
+              {formatter(this.props.data.followers_count)}
+            </span> people
+          </div>
+          <div className="friends">
+            Friends with <span className="friends-count">
+              {formatter(this.props.data.friends_count)}
+            </span> people
+          </div>
         </div>
         <Posts user={this.props.data.screen_name} />
         <Followers screen_name={this.props.data.screen_name} />
@@ -67,8 +64,7 @@ class ProfileBasic extends Component {
 }
 var fetchDataFor = (user) => {
   return function (dispatch) {
-    return fetchData(user).then( (data) => {
-      
+    return fetchData(user).then((data) => {
       return dispatch({
         type: 'UPDATE_USER_DATA',
         data
@@ -86,7 +82,6 @@ var fetchData = (user) => {
   })
 }
 const mapStateToProps = (state) => {
-  //console.log(state)
   return {
     data: state
   }
@@ -94,10 +89,12 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateUserData: (user) => {
-      dispatch(fetchDataFor(user))
+      return new Promise( (resolve, reject) => {
+        resolve(dispatch(fetchDataFor(user)))
+      })
     }
   }
-  
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

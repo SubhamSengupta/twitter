@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/followers.css'
+import { connect } from 'react-redux'
 const config = require('../config.json')
 class Followers extends Component {
   constructor(props) {
@@ -10,27 +11,17 @@ class Followers extends Component {
       isLoaded: false
     }
   }
-  componentWillReceiveProps(props) {
-    this.fetchData(props.screen_name)
-    this.setState({ isLoaded: false })
-  }
+  
   componentDidMount() {
-    this.fetchData(this.props.screen_name)
-  }
-  fetchData = (user) => {
-    fetch(`${config.baseURL}/followers/${user}`).then((res) => {
-      res.json().then((data) => {
-        this.setState({
-          followers: data,
-          isLoaded: true
-        })
-      })
+    this.props.updateFollowerData(this.props.screen_name).then(() => {
+      this.setState({ isLoaded: true})
     })
   }
+  
   render() {
     if (this.state.isLoaded) {
-      var followers = this.state.followers.map((follower) => {
-        return <FollowerDiv data={follower} key={follower.screen_name}/>
+      var followers = this.props.followers.map((follower) => {
+        return <FollowerDiv data={follower} key={'F_' + follower.screen_name} />
       })
     } else {
       followers = <div className="loading-follower"></div>
@@ -58,5 +49,40 @@ class FollowerDiv extends Component {
     )
   }
 }
+var fetchDataForFollower = (user) => {
+  return function (dispatch) {
+    return fetchFollowers(user).then((data) => {
+      return dispatch({
+        type: 'UPDATE_FOLLOWER_DATA',
+        data
+      })
+    })
+  }
+}
 
-export default Followers
+var fetchFollowers = (user) => {
+  return new Promise((resolve, reject) => {
+    fetch(`${config.baseURL}/followers/${user}`).then((res) => {
+      res.json().then((data) => {
+        resolve(data)
+      })
+    })
+  })
+}
+var mapStateToProps = (state) => {
+  return {
+    followers: state.user_follower_data
+  }
+}
+var mapDispatchToProps = (dispatch) => {
+  return {
+    updateFollowerData : (user) => {
+      return new Promise ((resolve, reject) => {
+        resolve(dispatch(fetchDataForFollower(user)))
+      })
+    }
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps) (Followers)

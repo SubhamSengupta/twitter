@@ -1,44 +1,33 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
 import '../styles/posts.css'
 import formatter from '../formatter'
+import { connect } from 'react-redux'
 const config = require('../config.json')
+
 class Posts extends Component {
   constructor() {
     super()
     this.state = {
-      isLoaded: false,
-      posts: ''
+      isLoaded: false
     }
   }
-  componentWillReceiveProps(props) {
-    this.fetchData(props.user)
-    this.setState({
-      isLoaded: false
-    })
-  }
   componentDidMount() {
-    this.fetchData(this.props.user)
-  }
-  fetchData = (user) => {
-    fetch(`${config.baseURL}/tweets/${user}`).then((res) => {
-      res.json().then((data) => {
-        this.setState({
-          isLoaded: true,
-          data: data
-        })
+    this.props.updatePostData(this.props.user).then(() => {
+      this.setState({
+        isLoaded: true
       })
     })
   }
+
   render() {
     if (this.state.isLoaded) {
-      var posts = this.state.data.map((tweet) => {
-        return <PostDiv data={tweet} changeClickStat={this.props.changeClickStat} />
+      var posts = this.props.data.map((tweet) => {
+        return <PostDiv data={tweet} key={tweet.created_at}/>
       })
 
     } else {
-      posts = <div className="loading-follower"></div>
+      var posts = <div className="loading-follower"></div>
     }
     return (
       <div className="posts-wrapper">
@@ -49,10 +38,6 @@ class Posts extends Component {
 }
 
 class PostDiv extends Component {
-  userClicked = (user) => {
-    user = user.substr(1, user.length)
-    this.props.changeClickStat(user)
-  }
   render() {
     var verified = this.props.data.isVerified ? <div className="ver"></div> : undefined
     var text = this.formatText(this.props.data.text).map((word) => {
@@ -87,7 +72,7 @@ class PostDiv extends Component {
         var format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
         word = word.substr(1, word.length)
         var text = word
-        while( word.charAt(word.length - 1).match(format) || word.charAt(word.length - 2).match(format)){
+        while (word.charAt(word.length - 1).match(format) || word.charAt(word.length - 2).match(format)) {
           word = word.substr(0, word.length - 1)
         }
         text = text.substr(word.length, text.length);
@@ -106,22 +91,50 @@ class PostDiv extends Component {
   dayForm = (day) => {
     switch (day) {
       case 'Mon': return 'Monday'
-        break;
       case 'Tue': return 'Tuesday'
-        break;
       case 'Wed': return 'Wednesday'
-        break;
       case 'Thu': return 'Thursday'
-        break;
       case 'Fri': return 'Friday'
-        break;
       case 'Sat': return 'Saturday'
-        break;
       case 'Sun': return 'Sunday'
-        break;
       default: return ''
     }
   }
 }
 
-export default Posts
+var fetchDataForPosts = (user) => {
+  return function (dispatch) {
+    return fetchPosts(user).then((data) => {
+      return dispatch({
+        type: 'UPDATE_POST_DATA',
+        data
+      })
+    })
+  }
+}
+var fetchPosts = (user) => {
+  return new Promise((resolve, reject) => {
+    fetch(`${config.baseURL}/tweets/${user}`).then((res) => {
+      res.json().then((data) => {
+        resolve(data)
+      })
+    })
+  })
+}
+
+var mapStateToProps = (state) => {
+  return {
+    data: state.user_post_data
+  }
+}
+var mapDispatchToProps = (dispatch) => {
+  return {
+    updatePostData: (user) => {
+      return new Promise((resolve, reject) => {
+        resolve(dispatch(fetchDataForPosts(user)))
+      })
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Posts)
