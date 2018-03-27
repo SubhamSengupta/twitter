@@ -30,7 +30,7 @@ class Followers extends Component {
   render() {
     if (this.state.isLoaded) {
       var followers = this.state.followers.map((follower) => {
-        return <FollowerDiv data={follower} key={follower.screen_name} changeClickStat={this.props.changeClickStat} />
+        return <FollowerDiv data={follower} key={follower.screen_name}/>
       })
     } else {
       followers = <div className="loading-follower"></div>
