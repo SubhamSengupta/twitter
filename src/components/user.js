@@ -9,13 +9,10 @@ class User extends Component {
       screen_name: this.props.data.data.screen_name
     }
   }
-  userClicked =  () => {
-    this.props.changeClickStat(this.state.screen_name)
-  }
 
   render() {
     return (
-      <div className="user-div" onClick={this.userClicked}>
+      <div className="user-div">
         <img src={this.props.data.data.img_url} alt={this.props.data.name}/>
         <div className="name">{this.props.data.name}<div className="ver"></div></div>
         <div className="screen-name">@{this.props.data.data.screen_name}</div>
