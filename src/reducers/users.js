@@ -1,21 +1,14 @@
 var Users = (state={}, action) => {
     switch(action.type){
-        case 'TOP_USERS': return {
+        case 'FETCH_TOP_USERS': return {
             ...state,
-            users_data: action.data
+            top_users: action.data.data
         }
-        case 'UPDATE_USER_DATA': return {
+        case 'UPDATE_USER_PROFILE': return {
             ...state,
-            user_profile_data: action.data
+            user_profile: action.data
         }
-        case 'UPDATE_POST_DATA': return {
-            ...state,
-            user_post_data: action.data
-        }
-        case 'UPDATE_FOLLOWER_DATA': return {
-            ...state,
-            user_follower_data: action.data
-        }
+
         default: return state
     }
 }
