@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import '../styles/profile.css'
-import Loader from '../components/Loader'
 import Followers from '../components/Followers'
 import Posts from '../components/Posts'
 import {Formatter} from '../utils/formatter'
 import { connect } from 'react-redux'
-const config = require('../config.json')
 
 
 class Profile extends Component {

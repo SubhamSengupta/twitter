@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import '../styles/posts.css'
 import {Formatter} from '../utils/formatter'
 import { connect } from 'react-redux'
-const config = require('../config.json')
 
 class Posts extends Component {
 
@@ -52,7 +51,7 @@ class PostDiv extends Component {
       } else if (word.startsWith('http') || (word.startsWith('www')) || word.startsWith('\nhttp')) {
         return <a target="_blank" href={word} key={'l_' + word}>{word}</a>
       } else if (word.startsWith('@') || word.startsWith('\n@')) {
-        var format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+        var format = /[ !@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/;
         word = word.substr(1, word.length)
         var text = word
         while (word.charAt(word.length - 1).match(format) || word.charAt(word.length - 2).match(format)) {

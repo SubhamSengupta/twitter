@@ -116,6 +116,7 @@ app.get('/tweets/:user', (req, response) => {
     tweets = JSON.parse(body) || []
     var data = []
     data = tweets.map((tweet) => {
+      console.log(tweet)
       var obj = {
         'created_at': tweet.created_at,
         'favorite_count': tweet.favorite_count,

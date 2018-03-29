@@ -74,7 +74,6 @@ var fetchData = (user) => {
     requests.push(fetchFromServer(`${config.baseURL}/users/${user}`))
     requests.push(fetchFromServer(`${config.baseURL}/followers/${user}`))
     requests.push(fetchFromServer(`${config.baseURL}/tweets/${user}`))
-    var data;
     Promise.all(requests).then((res) => {
       resolve ({
         profile: res[0],

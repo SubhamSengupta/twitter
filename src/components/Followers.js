@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/followers.css'
 import { connect } from 'react-redux'
-const config = require('../config.json')
 class Followers extends Component {
   render() {
     var followers = this.props.user_profile.followers.map((follower) => {
