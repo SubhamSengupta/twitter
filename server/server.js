@@ -68,7 +68,7 @@ app.get('/users/:user', (req, res) => {
     }
     res.send(obj)
   })
-})  
+})
 app.get('/followers/:user', (req, response) => {
   let name = req.params.user;
   let url = 'https://api.twitter.com/1.1/followers/list.json?cursor=' +
@@ -102,7 +102,7 @@ app.get('/followers/:user', (req, response) => {
 app.get('/tweets/:user', (req, response) => {
   let name = req.params.user;
   let url = 'https://api.twitter.com/1.1/statuses/user_timeline.json?' +
-    `screen_name=${name}&count=10`;
+    `screen_name=${name}&count=20`;
   let options = {
     url: url,
     headers: {
@@ -116,7 +116,6 @@ app.get('/tweets/:user', (req, response) => {
     tweets = JSON.parse(body) || []
     var data = []
     data = tweets.map((tweet) => {
-      console.log(tweet)
       var obj = {
         'created_at': tweet.created_at,
         'favorite_count': tweet.favorite_count,
@@ -126,6 +125,37 @@ app.get('/tweets/:user', (req, response) => {
         'screen_name': tweet.user.screen_name,
         'isVerified': tweet.user.verified,
         'url': tweet.user.profile_image_url_https
+      }
+      if (tweet.extended_entities) {
+        if (tweet.extended_entities.media[0].type === 'video') {
+          obj['media'] = {
+            url: tweet.extended_entities.media[0].video_info.variants[0].url,
+            type: tweet.extended_entities.media[0].type
+          }
+        } else {
+          obj['media'] = {
+            url: tweet.extended_entities.media[0].media_url_https,
+            type: tweet.extended_entities.media[0].type
+          }
+        }
+
+      } else if (tweet.entities.media) {
+        if (tweet.entities.media[0].type === 'video') {
+          obj['media'] = {
+            url: tweet.entities.media[0].video_info.variants[0].url,
+            type: tweet.entities.media[0].type
+          }
+        } else {
+          obj['media'] = {
+            url: tweet.entities.media[0].media_url_https,
+            type: tweet.entities.media[0].type
+          }
+        }
+      } else {
+        obj['media'] = {
+          url: "",
+          type: ""
+        }
       }
       return obj
     })

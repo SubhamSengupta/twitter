@@ -25,6 +25,11 @@ class PostDiv extends Component {
     var text = this.formatText(this.props.data.text).map((word) => {
       return <span>{word} </span>
     })
+    var media = this.props.data.media.type === 'photo' 
+      ? <img className="post-image" src={this.props.data.media.url}/>
+      : this.props.data.media.type === 'video'
+        ? <video src={this.props.data.media.url} controls></video>
+        : undefined
     return (
       <div className="posts-div">
         <div className="details">
@@ -36,6 +41,7 @@ class PostDiv extends Component {
         </div>
 
         <div className="text"><p>{text}</p></div>
+        {media}
         <div className="time">{this.shape(this.props.data.created_at)}</div>
         <div className="tweet-stat">
           <div className="favorite"><div className="fav"></div>{Formatter(this.props.data.favorite_count)}</div>

@@ -30,6 +30,15 @@
     padding: 2px;
     border: 1px solid #299;
 }
+.posts-div .post-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    border: none;
+}
+.posts-div video{
+    width: 100%;
+}
 .posts-div .details {
     display: inline-flex;
     padding: 5px;
